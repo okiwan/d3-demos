@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title></title>
+        <script src="//localhost:35729/livereload.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <h1>Keywords and Users</h1>
+        <div class="snaParent"></div>
+        <div class="snaControls">
+            <form id="snaControls">
+                <div class="snaControl">
+                    <label for="snaKeywordWeight">Keyword Weight</label>
+                    <input type="range" id="snaKeywordWeight" min="0" max="500" step="10">
+                    <span>(<span>200</span>)</span>
+                </div>
+                <div class="snaControl">
+                    <label for="snaUserWeight">User Weight</label>
+                    <input type="range" id="snaUserWeight" min="0" max="500" step="10">
+                    <span>(<span>200</span>)</span>
+                </div>
+            </form>
+        </div>
+
+        <script type="text/javascript">
+            // DATA //////////////////////////////////////////
+            var srcData = {
+                "type": "keywords_users",
+                "network": {
+                    "directed": false,
+                    "graph": {},
+                    "nodes": [
+                        {
+                        "id": "toyota"
+                        },
+                        {
+                        "id": 1278774565
+                        },
+                        {
+                        "id": 14426889
+                        },
+                        {
+                        "id": 3131520940
+                        },
+                        {
+                        "id": 2491390638
+                        },
+                        {
+                        "id": 618834351
+                        },
+                        {
+                        "id": 3116334865
+                        },
+                        {
+                        "id": "bmw"
+                        },
+                        {
+                        "id": 48058102
+                        },
+                        {
+                        "id": "vw"
+                        },
+                        {
+                        "id": 807316026
+                        },
+                        {
+                        "id": 3031332029
+                        },
+                        {
+                        "id": 297842046
+                        },
+                        {
+                        "id": "audi"
+                        }
+                    ],
+                    "links": [
+                        {
+                        "source": 0,
+                        "target": 3,
+                        "weight": 7
+                        },
+                        {
+                        "source": 0,
+                        "target": 4,
+                        "weight": 7
+                        },
+                        {
+                        "source": 0,
+                        "target": 5,
+                        "weight": 7
+                        },
+                        {
+                        "source": 0,
+                        "target": 6,
+                        "weight": 7
+                        },
+                        {
+                        "source": 0,
+                        "target": 8,
+                        "weight": 7
+                        },
+                        {
+                        "source": 0,
+                        "target": 10,
+                        "weight": 7
+                        },
+                        {
+                        "source": 0,
+                        "target": 11,
+                        "weight": 8
+                        },
+                        {
+                        "source": 0,
+                        "target": 12,
+                        "weight": 8
+                        },
+                        {
+                        "source": 1,
+                        "target": 13,
+                        "weight": 5
+                        },
+                        {
+                        "source": 2,
+                        "target": 13,
+                        "weight": 7
+                        },
+                        {
+                        "source": 2,
+                        "target": 7,
+                        "weight": 1
+                        },
+                        {
+                        "source": 2,
+                        "target": 9,
+                        "weight": 6
+                        },
+                        {
+                        "source": 3,
+                        "target": 13,
+                        "weight": 12
+                        },
+                        {
+                        "source": 3,
+                        "target": 7,
+                        "weight": 8
+                        },
+                        {
+                        "source": 3,
+                        "target": 9,
+                        "weight": 29
+                        },
+                        {
+                        "source": 4,
+                        "target": 13,
+                        "weight": 31
+                        },
+                        {
+                        "source": 4,
+                        "target": 7,
+                        "weight": 13
+                        },
+                        {
+                        "source": 4,
+                        "target": 9,
+                        "weight": 37
+                        },
+                        {
+                        "source": 5,
+                        "target": 13,
+                        "weight": 32
+                        },
+                        {
+                        "source": 5,
+                        "target": 7,
+                        "weight": 14
+                        },
+                        {
+                        "source": 5,
+                        "target": 9,
+                        "weight": 37
+                        },
+                        {
+                        "source": 6,
+                        "target": 13,
+                        "weight": 54
+                        },
+                        {
+                        "source": 6,
+                        "target": 7,
+                        "weight": 15
+                        },
+                        {
+                        "source": 6,
+                        "target": 9,
+                        "weight": 41
+                        },
+                        {
+                        "source": 7,
+                        "target": 8,
+                        "weight": 16
+                        },
+                        {
+                        "source": 7,
+                        "target": 10,
+                        "weight": 37
+                        },
+                        {
+                        "source": 7,
+                        "target": 11,
+                        "weight": 145
+                        },
+                        {
+                        "source": 7,
+                        "target": 12,
+                        "weight": 145
+                        },
+                        {
+                        "source": 8,
+                        "target": 13,
+                        "weight": 57
+                        },
+                        {
+                        "source": 8,
+                        "target": 9,
+                        "weight": 43
+                        },
+                        {
+                        "source": 9,
+                        "target": 10,
+                        "weight": 48
+                        },
+                        {
+                        "source": 9,
+                        "target": 11,
+                        "weight": 87
+                        },
+                        {
+                        "source": 9,
+                        "target": 12,
+                        "weight": 92
+                        },
+                        {
+                        "source": 10,
+                        "target": 13,
+                        "weight": 61
+                        },
+                        {
+                        "source": 11,
+                        "target": 13,
+                        "weight": 68
+                        },
+                        {
+                        "source": 12,
+                        "target": 13,
+                        "weight": 73
+                        }
+                    ],
+                    "multigraph": false
+                }
+            };
+
+            // Data initcialization. Specific for each view!
+            // We are taking by granted that the source structure is well
+            // constructred, and has all the necessary data.
+            srcData.network.links.forEach(function(link) {
+                var nodes = [link.source, link.target];
+                var tmp = 0;
+
+                nodes.forEach(function(node) {
+                    if(typeof(srcData.network.nodes[node].id) === "string") {
+                        tmp = (typeof srcData.network.nodes[node].myWeight === "undefined") ? 0 : srcData.network.nodes[node].myWeight;
+                        srcData.network.nodes[node].myWeight = tmp + link.weight;
+                    }
+                });
+            });
+
+
+
+            // PAGE-RELATED JAVASCRIPT ///////////////////////
+
+            // Get max values for Keyword and User Weight
+            var maxKeywordWeight = 0, maxUserWeight = 0;
+            srcData.network.nodes.forEach(function(node) {
+                if(typeof(node.id) === "string")
+                    maxKeywordWeight = Math.max(maxKeywordWeight, node.myWeight);
+            });
+            srcData.network.links.forEach(function(link) {
+                maxUserWeight = Math.max(maxUserWeight, link.weight);
+            });
+
+            var element1 = document.getElementById('snaKeywordWeight');
+            var element2 = document.getElementById('snaUserWeight');
+
+            // Modifying DOM values for controls
+            element1.max = element1.value = maxKeywordWeight;
+            element2.max = element2.value = maxUserWeight;
+            element1.parentNode.childNodes[5].childNodes[1].textContent = element1.value;
+            element2.parentNode.childNodes[5].childNodes[1].textContent = element2.value;
+
+            // Adding control listeners
+            element1.onchange = function() {
+                // Temporarily we disable controls
+                this.disabled = true;
+                var newValue = this.value;
+
+                // Modifying nodes
+                nodes
+                    .filter(function(d) {
+                        return (d.myWeight > newValue);
+                    })
+                    .attr("visibility", "hidden");
+
+                nodes
+                    .filter(function(d) {
+                        return (d.myWeight <= newValue);
+                    })
+                    .attr("visibility", "visible");
+
+                // Modify links
+                path
+                    .filter(function(d) {
+                        result = false;
+                        if(typeof(d.source.myWeight) !== "undefined")
+                            result = result || (d.source.myWeight > newValue);
+                        if(typeof(d.target.myWeight) !== "undefined")
+                            result = result || (d.target.myWeight > newValue);
+                        return result;
+                    })
+                    .attr("visibility", "hidden");
+
+                path
+                    .filter(function(d) {
+                        result = true;
+                        if(typeof(d.source.myWeight) !== "undefined")
+                            result = result && (d.source.myWeight <= newValue);
+                        if(typeof(d.target.myWeight) !== "undefined")
+                            result = result && (d.target.myWeight <= newValue);
+                        return result;
+                    })
+                    .attr("visibility", "visible");
+
+                // Update label
+                this.parentNode.childNodes[5].childNodes[1].textContent = this.value;
+                this.disabled = false;
+            };
+
+            element2.onchange = function() {
+                // Update controls
+                this.disabled = true;
+                var newValue = this.value;
+
+                // Modify links
+                path
+                    .filter(function(d) {
+                        return (d.weight > newValue);
+                    })
+                    .attr("visibility", "hidden");
+
+                path
+                    .filter(function(d) {
+                        return (d.weight <= newValue);
+                    })
+                    .attr("visibility", "visible");
+
+                // 2) We should also hide nodes, but not sure how to do that
+                // right now.
+                // 3) The same as above, but displaying them.
+
+                // Update controls
+                this.parentNode.childNodes[5].childNodes[1].textContent = this.value;
+                this.disabled = false;
+            };
+
+
+
+            // VISUALIZATION-RELATED JAVASCRIPT //////////////
+
+            // The following tooltip definition should be on a different
+            // file. For the sake of code's legibility
+            d3.helper = {};
+
+            d3.helper.tooltip = function(accessor){
+                return function(selection){
+                    var tooltipDiv;
+                    var bodyNode = d3.select('body').node();
+                    selection.on("mouseover", function(d, i){
+                        // Clean up lost tooltips
+                        d3.select('body').selectAll('div.tooltip').remove();
+
+                        // Append tooltip
+                        tooltipDiv = d3.select('body').append('div').attr('class', 'tooltip');
+                        var absoluteMousePos = d3.mouse(bodyNode);
+                        tooltipDiv.style('left', (absoluteMousePos[0] + 10)+'px')
+                            .style('top', (absoluteMousePos[1] - 15)+'px')
+                            .style('position', 'absolute')
+                            .style('z-index', 1001);
+
+                        // Add text using the accessor function
+                        var tooltipText = accessor(d, i) || '';
+
+                        // Crop text arbitrarily
+                        //tooltipDiv.style('width', function(d, i){return (tooltipText.length > 80) ? '300px' : null;})
+                        //    .html(tooltipText);
+                    }).on('mousemove', function(d, i) {
+                        // Move tooltip
+                        var absoluteMousePos = d3.mouse(bodyNode);
+                        tooltipDiv.style('left', (absoluteMousePos[0] + 10)+'px')
+                            .style('top', (absoluteMousePos[1] - 15)+'px');
+                        var tooltipText = accessor(d, i) || '';
+                        tooltipDiv.html(tooltipText);
+                    }).on("mouseout", function(d, i){
+                        // Remove tooltip
+                        tooltipDiv.remove();
+                    });
+
+                };
+            };
+
+            var mouseFlag = 0,
+                margin = {top: -5, right: -5, bottom: -5, left: -5},
+                width = 730 - margin.left - margin.right,
+                height = 500 - margin.top - margin.bottom,
+                nodes = {};
+
+            // Compute the distinct nodes from the links.
+            srcData.network.links.forEach(function(link) {
+                link.source = nodes[link.source] || (nodes[link.source] = {name: srcData.network.nodes[link.source].id, myWeight: srcData.network.nodes[link.source].myWeight});
+                link.target = nodes[link.target] || (nodes[link.target] = {name: srcData.network.nodes[link.target].id, myWeight: srcData.network.nodes[link.target].myWeight});
+            });
+
+            // Zoom behavior and callbacks
+            var zoom = d3.behavior.zoom()
+                .scaleExtent([1, 10])
+                .on("zoom", zoomed);
+
+            function zoomed() {
+                container.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+            }
+
+            // General parameters
+            var svg = d3.select(".snaParent").append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .attr("class", "snaBox")
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.right + ")")
+                .call(zoom);
+
+            var rect = svg.append("rect")
+                .attr("width", width)
+                .attr("height", height)
+                .style("fill", "none")
+                .style("pointer-events", "all");
+
+            var container = svg.append("g");
+
+            // Force layout parameters
+            var force = d3.layout.force()
+                .gravity(0.001)
+                .nodes(d3.values(nodes))
+                .links(srcData.network.links)
+                .size([width, height])
+                .linkDistance(100)
+                .linkStrength(0.5)
+                .charge(-300)
+                .on("tick", tick)
+                .start();
+
+            /*
+            // Per-type markers, as they don't inherit styles.
+            svg.append("defs").selectAll("marker")
+                .data(["suit", "licensing", "resolved"])
+                .enter().append("marker")
+                .attr("id", function(d) { return d; })
+                .attr("viewBox", "0 -5 10 10")
+                .attr("refX", 15)
+                .attr("refY", -1.5)
+                .attr("markerWidth", 6)
+                .attr("markerHeight", 6)
+                .attr("orient", "auto")
+                .attr("d", "M0,-5L10,0L0,5");
+            */
+
+            var path = container.selectAll(".link")
+                .data(force.links())
+                .enter().append("line")
+                .attr("class", function(d) {
+                   var linkWidth = "l" + ((d.weight / maxUserWeight)).toFixed(1) * 10;
+                   return "link " + linkWidth;
+                })
+                .attr("weight", function(d) { return d.weight; });
+
+
+            // Drag&Drop behavior and callbacks
+            var nodeDrag = d3.behavior.drag()
+                .on("dragstart", nodeDragStart)
+                .on("drag", nodeDragMove)
+                .on("dragend", nodeDragEnd);
+
+            // Disable force feedback on nodes that have been dragged&dropped
+            function nodeDragStart(d, i) {
+                d3.event.sourceEvent.stopPropagation();
+                force.stop();
+            }
+
+            function nodeDragMove(d, i) {
+                d.px += d3.event.dx;
+                d.py += d3.event.dy;
+                d.x += d3.event.dx;
+                d.y += d3.event.dy;
+                tick();
+            }
+
+            function nodeDragEnd(d, i) {
+                d.fixed = true;
+                tick();
+                force.resume();
+            }
+
+            var nodes = container.selectAll(".node")
+                .data(force.nodes())
+                .enter()
+                .append("g")
+                .attr("class", "node")
+                .attr("class", function(d) { return (typeof(d.name) == "string")? "keyword" : "user" })
+                .on("mousedown", nodeOnMouseDown)
+                .on("mouseup", nodeOnMouseUp)
+                .on("mousemove", nodeOnMouseMove)
+                .call(nodeDrag);
+
+            container.selectAll(".keyword").append("circle")
+                .attr("r", calcRadius)
+                .call(d3.helper.tooltip(function(d, i) {
+                    return '<b>Node weight:</b> ' + d.myWeight;
+                }));
+
+            container.selectAll(".user").append("rect")
+                .attr("width", 10)
+                .attr("height", 10)
+
+            var texts = nodes.append("text")
+                .attr("text-anchor", "middle")
+                .text(function(d) {
+                    var txt = "";
+                    if(typeof(d.name) === "string")
+                        txt = d.name;
+                    return txt;
+                });
+
+            // The user clicks down the button mouse
+            function nodeOnMouseDown() {
+                mouseFlag = 0;
+            }
+
+            // The user moves around the mouse
+            function nodeOnMouseMove() {
+                mouseFlag = 1;
+            }
+
+            // The user clicks up (releases) the button mouse
+            // It may happen that a click is not executed properly beacuase
+            // the node has been moved just a pixel. If that's a problem it
+            // may be interesting to implement a "delta" distance that should
+            // be reached to consider a mouse move.
+            function nodeOnMouseUp(d) {
+                if(mouseFlag === 0) {
+                    if(typeof(d.name) !== "string") {
+                        // It's a user. Access to tweeter profile
+                        window.open("https://twitter.com/intent/user?user_id=" + d.name);
+                    }
+                }
+            }
+
+            // Calculates the radius of a keyword node
+            function calcRadius(d) {
+                var proportion = 0.1;   // This should be generated dynamically
+                return d.myWeight * proportion;
+            }
+
+            // Use elliptical arc path segments to doubly-encode directionality.
+            function tick() {
+                path
+                    .attr("x1", function(d) { return d.source.x; })
+                    .attr("y1", function(d) { return d.source.y; })
+                    .attr("x2", function(d) { return d.target.x; })
+                    .attr("y2", function(d) { return d.target.y; });
+
+                nodes.attr("transform", transform);
+            }
+
+            function transform(d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            }
+
+/**
+ * Removed
+            var links = [
+            {source: "Microsoft", target: "Amazon", type: "licensing"},
+            {source: "Microsoft", target: "HTC", type: "licensing"},
+            {source: "Samsung", target: "Apple", type: "suit"},
+            {source: "Motorola", target: "Apple", type: "suit"},
+            {source: "Nokia", target: "Apple", type: "resolved"},
+            {source: "HTC", target: "Apple", type: "suit"},
+            {source: "Kodak", target: "Apple", type: "suit"},
+            {source: "Microsoft", target: "Barnes & Noble", type: "suit"},
+            {source: "Microsoft", target: "Foxconn", type: "suit"},
+            {source: "Oracle", target: "Google", type: "suit"},
+            {source: "Apple", target: "HTC", type: "suit"},
+            {source: "Microsoft", target: "Inventec", type: "suit"},
+            {source: "Samsung", target: "Kodak", type: "resolved"},
+            {source: "LG", target: "Kodak", type: "resolved"},
+            {source: "RIM", target: "Kodak", type: "suit"},
+            {source: "Sony", target: "LG", type: "suit"},
+            {source: "Kodak", target: "LG", type: "resolved"},
+            {source: "Apple", target: "Nokia", type: "resolved"},
+            {source: "Qualcomm", target: "Nokia", type: "resolved"},
+            {source: "Apple", target: "Motorola", type: "suit"},
+            {source: "Microsoft", target: "Motorola", type: "suit"},
+            {source: "Motorola", target: "Microsoft", type: "suit"},
+            {source: "Huawei", target: "ZTE", type: "suit"},
+            {source: "Ericsson", target: "ZTE", type: "suit"},
+            {source: "Kodak", target: "Samsung", type: "resolved"},
+            {source: "Apple", target: "Samsung", type: "suit"},
+            {source: "Kodak", target: "RIM", type: "suit"},
+            {source: "Nokia", target: "Qualcomm", type: "suit"}
+            ];
+
+            var path = svg.append("g").selectAll("path")
+            .data(force.links())
+            .enter().append("path")
+            .attr("class", function(d) { return "link " + d.type; })
+            .attr("marker-end", function(d) { return "url(#" + d.type + ")"; });
+
+            // Use elliptical arc path segments to doubly-encode directionality.
+            function tick() {
+                path.attr("d", linkArc);
+                nodes.attr("transform", transform);
+            }
+            k
+            function linkArc(d) {
+                // console.log(d.target.x-d.radius)
+                var tX = d.target.x-d.target.radius;
+                var dx = tX - d.source.x,
+                dy = d.target.y - d.source.y,
+                dr = Math.sqrt(dx * dx + dy * dy);
+                return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + tX + "," + d.target.y;
+            }
+*/
+
+        </script>
+    </body>
+</html>

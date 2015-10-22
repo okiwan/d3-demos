@@ -1,0 +1,121 @@
+.link {
+    fill: none;
+    stroke: #ff0000;
+    stroke-width: 1.0px;
+    opacity: 0.1;
+}
+
+.link.l1 {
+    stroke-width: 1.5px;
+    opacity: 0.2;
+}
+
+.link.l2 {
+    stroke-width: 2.0px;
+    opacity: 0.3;
+}
+
+.link.l3 {
+    stroke-width: 2.5px;
+    opacity: 0.4;
+}
+
+.link.l4 {
+    stroke-width: 3.0px;
+    opacity: 0.5;
+}
+
+.link.l5 {
+    stroke-width: 3.5px;
+    opacity: 0.6;
+}
+
+.link.l6 {
+    stroke-width: 4.0px;
+    opacity: 0.7;
+}
+
+.link.l7 {
+    stroke-width: 4.5px;
+    opacity: 0.8;
+}
+
+.link.l8 {
+    stroke-width: 5.0px;
+    opacity: 0.9;
+}
+
+.link.l9 {
+    stroke-width: 5.5px;
+    opacity: 1.0;
+}
+
+.link.l10 {
+    stroke-width: 6.0px;
+    opacity: 1.0;
+}
+
+.node.l0 { opacity: 0.1; }
+.node.l1 { opacity: 0.1; }
+.node.l2 { opacity: 0.2; }
+.node.l3 { opacity: 0.3; }
+.node.l4 { opacity: 0.4; }
+.node.l5 { opacity: 0.5; }
+.node.l6 { opacity: 0.6; }
+.node.l7 { opacity: 0.7; }
+.node.l8 { opacity: 0.8; }
+.node.l9 { opacity: 0.9; }
+.node.l10 { opacity: 1.0; }
+
+#licensing {
+    fill: green;
+}
+
+.link.licensing {
+    stroke: green;
+}
+
+.link.resolved {
+    stroke-dasharray: 0,2 1;
+}
+
+circle {
+    fill: #b1be29;
+    stroke: #b1be29;
+    stroke-width: 1.5px;
+}
+
+text {
+    font: 10px sans-serif;
+    pointer-events: none;
+    text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+}
+
+div.tooltip {
+    background: white;
+    border: 1px solid black;
+    font-family: Arial;
+    padding: 10px;
+}
+
+svg.snaBox {
+    border: 1px solid black;
+}
+
+svg.snaBox g > circle, svg.snaBox g > rect {
+    cursor: pointer;
+}
+
+.snaParent {
+    margin: 0 auto;
+    width: 730px;
+}
+
+.snaControls {
+    margin: 0 auto;
+    width: 730px;
+}
+
+.snaControl {
+    margin: 10px 0;
+}

@@ -1,0 +1,19 @@
+{
+  "name": "optidesperate",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "git+https://github.com/gruntjs/grunt-contrib-watch.git",
+    "grunt-reload": "~0.2.0"
+  },
+  "description": "Developing just for the sake of it",
+  "main": "index.html",
+  "dependencies": {
+    "grunt-reload": "^0.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sergio Ocaña Gálvez",
+  "license": "ISC"
+}

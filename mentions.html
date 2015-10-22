@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title></title>
+        <script src="//localhost:35729/livereload.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <h1>Keywords and Users</h1>
+        <div class="snaParent"></div>
+        <div class="snaControls">
+            <form id="snaControls">
+                <!--div class="snaControl">
+                    <label for="snaKeywordWeight">Keyword Weight</label>
+                    <input type="range" id="snaKeywordWeight" min="0" max="500" step="10">
+                    <span>(<span>200</span>)</span>
+                </div-->
+                <div class="snaControl">
+                    <label for="snaUserWeight">User Weight</label>
+                    <input type="range" id="snaUserWeight" min="0" max="500" step="1">
+                    <span>(<span>200</span>)</span>
+                </div>
+            </form>
+        </div>
+
+        <script type="text/javascript">
+            // DATA //////////////////////////////////////////
+            var srcData = {"type": "mentions_network", "network": {"directed": false, "graph": {}, "nodes": [{"id": 17119238}, {"id": 211699719}, {"id": 620553}, {"id": 911288336}, {"id": 435319811}, {"id": 64880662}, {"id": 94337051}, {"id": 318668829}, {"id": 30509098}, {"id": 88041518}, {"id": 12537912}, {"id": 3444668475}, {"id": 9379912}, {"id": 222562378}, {"id": 82655307}, {"id": 105109582}, {"id": 3448911}, {"id": 14866514}, {"id": 6414422}, {"id": 215781464}, {"id": 14764121}, {"id": 425648227}, {"id": 214831208}, {"id": 341717102}, {"id": 17291379}, {"id": 16308342}, {"id": 8157312}, {"id": 17805442}, {"id": 15118470}, {"id": 19226763}, {"id": 40470668}, {"id": 73357460}, {"id": 8089762}, {"id": 28962987}, {"id": 10977452}, {"id": 30871725}, {"id": 11483312}, {"id": 20787380}, {"id": 395231417}, {"id": 798906}, {"id": 1776671}, {"id": 24950973}, {"id": 20455625}, {"id": 3129606347}, {"id": 8521932}, {"id": 3062599894}, {"id": 253272279}, {"id": 16281816}, {"id": 150374621}, {"id": 138143966}, {"id": 238117087}, {"id": 9605352}, {"id": 16664812}, {"id": 366090487}, {"id": 8016122}, {"id": 2346569087}, {"id": 6228222}, {"id": 294310143}, {"id": 18757892}, {"id": 6408}, {"id": 135579914}, {"id": 10285102}, {"id": 184865048}, {"id": 259688734}, {"id": 1638691}, {"id": 301660456}, {"id": 428333}, {"id": 33906991}, {"id": 1852578096}, {"id": 2220286261}, {"id": 70476089}, {"id": 350482749}, {"id": 2480079168}, {"id": 266099011}, {"id": 67139913}, {"id": 17023309}, {"id": 19982679}, {"id": 29151579}, {"id": 596825488}, {"id": 2031971}, {"id": 186023314}, {"id": 103256431}, {"id": 145983857}, {"id": 410003828}, {"id": 431845751}, {"id": 137980282}, {"id": 254607741}, {"id": 17619332}, {"id": 105222539}, {"id": 382327181}, {"id": 14283502}, {"id": 11946392}, {"id": 459368858}, {"id": 2975678883}, {"id": 38449574}, {"id": 17285543}, {"id": 171432361}, {"id": 236528042}, {"id": 143516076}, {"id": 10568112}, {"id": 731573}, {"id": 525225033}, {"id": 3164611}, {"id": 6033862}, {"id": 18944456}, {"id": 269736393}, {"id": 11219402}, {"id": 249403853}, {"id": 16777682}, {"id": 281043}, {"id": 199043547}, {"id": 243608028}, {"id": 56695264}, {"id": 194496993}, {"id": 20380132}, {"id": 10250322}, {"id": 81721843}, {"id": 136589813}, {"id": 15331830}, {"id": 14219769}, {"id": 41583102}, {"id": 6074912}, {"id": 131160610}, {"id": 88482344}, {"id": 20085289}, {"id": 269734444}, {"id": 18203183}, {"id": 9224762}, {"id": 361538119}, {"id": 292019298}, {"id": 95232591}, {"id": 7598672}, {"id": 16276054}, {"id": 9685592}, {"id": 15444576}, {"id": 15168272}, {"id": 10877552}, {"id": 2535129720}, {"id": 8809082}, {"id": 3172430465}, {"id": 1493641}, {"id": 8077422}, {"id": 14830231}, {"id": 4348571}, {"id": 107760289}, {"id": 269202088}, {"id": 617015986}, {"id": 14650037}, {"id": 8075962}, {"id": 910013126}, {"id": 756431}, {"id": 16011988}, {"id": 251357909}, {"id": 811737}, {"id": 217922267}, {"id": 278977246}, {"id": 318417633}, {"id": 555887331}, {"id": 80820969}, {"id": 11999982}, {"id": 16182002}, {"id": 14588662}, {"id": 185326333}, {"id": 440003329}, {"id": 6503172}, {"id": 110418698}, {"id": 14371600}, {"id": 1200339733}, {"id": 11662102}, {"id": 29793047}, {"id": 135785246}, {"id": 51387167}, {"id": 819676}, {"id": 199899949}, {"id": 949041}, {"id": 18883379}, {"id": 428262200}, {"id": 234931002}, {"id": 92373827}, {"id": 17411213}, {"id": 213979986}, {"id": 13139}, {"id": 20304727}, {"id": 2961901}, {"id": 29762362}, {"id": 5913442}, {"id": 55507821}, {"id": 612412274}, {"id": 41786228}, {"id": 57377653}, {"id": 68672385}, {"id": 2671491}, {"id": 1143351247}, {"id": 19825544}, {"id": 417762188}, {"id": 2581837293}, {"id": 15565721}, {"id": 7601052}, {"id": 54173}, {"id": 131472293}, {"id": 19762091}, {"id": 14097327}, {"id": 333433782}, {"id": 237650873}, {"id": 267088828}, {"id": 128811965}, {"id": 1660775364}, {"id": 2456990665}, {"id": 2232769482}, {"id": 19762123}, {"id": 7035852}, {"id": 10673102}, {"id": 45581271}, {"id": 16378840}, {"id": 145734617}, {"id": 40831963}, {"id": 37624801}, {"id": 2893368293}, {"id": 10877932}, {"id": 10361342}, {"id": 66968568}, {"id": 55620603}, {"id": 2516397059}, {"id": 11719692}, {"id": 15930389}, {"id": 17681439}, {"id": 148155433}, {"id": 10710062}, {"id": 2337397809}, {"id": 6177862}, {"id": 248306761}, {"id": 15453259}, {"id": 80366671}, {"id": 2708561}, {"id": 1087428110}, {"id": 74880086}, {"id": 8490082}, {"id": 75340917}, {"id": 14265463}, {"id": 16743547}, {"id": 44326016}, {"id": 195861636}, {"id": 27783}, {"id": 7535752}, {"id": 103902346}, {"id": 306652299}, {"id": 317940877}, {"id": 320760982}, {"id": 14587031}, {"id": 16979096}, {"id": 191046815}, {"id": 82029728}, {"id": 498965677}, {"id": 9028782}, {"id": 38063}, {"id": 1477811}, {"id": 38536381}, {"id": 18252994}, {"id": 168615109}, {"id": 8203462}, {"id": 7206092}, {"id": 458538188}, {"id": 761043}, {"id": 2905232597}, {"id": 769241}, {"id": 489340131}, {"id": 8076532}, {"id": 124142838}, {"id": 119350519}, {"id": 56136952}, {"id": 137671936}, {"id": 14798087}, {"id": 6931722}, {"id": 978038029}, {"id": 17515802}, {"id": 404362799}, {"id": 188740892}, {"id": 103226658}, {"id": 2315345191}, {"id": 96853295}, {"id": 880440631}, {"id": 147877182}, {"id": 2532560192}, {"id": 16690504}, {"id": 5410122}, {"id": 242277709}, {"id": 2270723412}, {"id": 10816862}, {"id": 1627741537}, {"id": 15060881}, {"id": 195362169}, {"id": 306414975}, {"id": 11263362}, {"id": 15734154}, {"id": 615415180}, {"id": 50257296}, {"id": 44336530}, {"id": 2321642918}, {"id": 54523305}, {"id": 18050478}, {"id": 16694719}, {"id": 204514754}, {"id": 335353283}, {"id": 1660361}, {"id": 157763020}, {"id": 15115726}, {"id": 100849315}, {"id": 14147035}, {"id": 44873195}, {"id": 401387090}, {"id": 30858736}, {"id": 183735793}, {"id": 181136882}, {"id": 14073331}, {"id": 14831098}, {"id": 20583931}, {"id": 287124992}, {"id": 177929737}, {"id": 236979723}, {"id": 2934470158}, {"id": 47560215}, {"id": 89679388}, {"id": 549903911}, {"id": 14460463}, {"id": 224353849}, {"id": 18103873}, {"id": 7306822}, {"id": 2789066319}, {"id": 1410035282}, {"id": 8674902}, {"id": 10616412}, {"id": 16782947}, {"id": 12410472}, {"id": 20270696}, {"id": 222553739}, {"id": 1730201}, {"id": 2520731}, {"id": 491108003}, {"id": 11120292}, {"id": 71020200}, {"id": 196955819}, {"id": 213341873}, {"id": 14390964}, {"id": 3794621}, {"id": 39483072}, {"id": 6790852}, {"id": 112531142}, {"id": 779977}, {"id": 30658251}, {"id": 14339792}, {"id": 428938961}, {"id": 15429583}, {"id": 278615775}, {"id": 2454351}, {"id": 187338467}, {"id": 14675697}, {"id": 13668082}, {"id": 579350259}, {"id": 198217462}, {"id": 194494420}, {"id": 13125372}, {"id": 10782472}, {"id": 19280855}, {"id": 332443407}, {"id": 358661916}, {"id": 17825567}, {"id": 253017888}, {"id": 224661284}, {"id": 5490652}, {"id": 17833774}, {"id": 14657345}, {"id": 18720579}, {"id": 61253}, {"id": 413183818}, {"id": 15253324}, {"id": 145186643}, {"id": 2432788310}, {"id": 14604126}, {"id": 263806815}, {"id": 15075174}, {"id": 47314791}, {"id": 94529392}, {"id": 35186545}, {"id": 11777912}, {"id": 10733442}, {"id": 2828369798}, {"id": 45959052}, {"id": 167329681}, {"id": 262688665}, {"id": 17627045}, {"id": 19068841}, {"id": 271452078}, {"id": 343283631}, {"id": 11147202}, {"id": 11794372}, {"id": 774535116}, {"id": 1341983053}, {"id": 55261139}, {"id": 14774228}, {"id": 27961303}, {"id": 284633}, {"id": 521748442}, {"id": 193785820}, {"id": 14436317}, {"id": 9375712}, {"id": "5412912"}, {"id": 380925925}, {"id": 72404972}, {"id": 301111277}, {"id": 85780464}, {"id": 69599217}, {"id": 20760565}, {"id": 8302582}, {"id": 94703610}], "links": [{"source": 0, "target": 405, "weight": 0}, {"source": 1, "target": 405, "weight": 15}, {"source": 2, "target": 405, "weight": 0}, {"source": 3, "target": 405, "weight": 0}, {"source": 4, "target": 405, "weight": 0}, {"source": 5, "target": 405, "weight": 0}, {"source": 6, "target": 405, "weight": 3}, {"source": 7, "target": 405, "weight": 0}, {"source": 8, "target": 405, "weight": 0}, {"source": 9, "target": 405, "weight": 1}, {"source": 10, "target": 405, "weight": 0}, {"source": 11, "target": 405, "weight": 0}, {"source": 12, "target": 405, "weight": 4}, {"source": 13, "target": 405, "weight": 2}, {"source": 14, "target": 405, "weight": 0}, {"source": 15, "target": 405, "weight": 5}, {"source": 16, "target": 405, "weight": 0}, {"source": 17, "target": 405, "weight": 20}, {"source": 18, "target": 405, "weight": 7}, {"source": 19, "target": 405, "weight": 0}, {"source": 20, "target": 405, "weight": 55}, {"source": 21, "target": 405, "weight": 0}, {"source": 22, "target": 405, "weight": 0}, {"source": 23, "target": 405, "weight": 0}, {"source": 24, "target": 405, "weight": 3}, {"source": 25, "target": 405, "weight": 2}, {"source": 26, "target": 405, "weight": 1}, {"source": 27, "target": 405, "weight": 0}, {"source": 28, "target": 405, "weight": 5}, {"source": 29, "target": 405, "weight": 0}, {"source": 30, "target": 405, "weight": 1}, {"source": 31, "target": 405, "weight": 0}, {"source": 32, "target": 405, "weight": 3}, {"source": 33, "target": 405, "weight": 11}, {"source": 34, "target": 405, "weight": 5}, {"source": 35, "target": 405, "weight": 0}, {"source": 36, "target": 405, "weight": 0}, {"source": 37, "target": 405, "weight": 0}, {"source": 38, "target": 405, "weight": 15}, {"source": 39, "target": 405, "weight": 2}, {"source": 40, "target": 405, "weight": 1}, {"source": 41, "target": 405, "weight": 0}, {"source": 42, "target": 405, "weight": 0}, {"source": 43, "target": 405, "weight": 1}, {"source": 44, "target": 405, "weight": 4}, {"source": 45, "target": 405, "weight": 1}, {"source": 46, "target": 405, "weight": 0}, {"source": 47, "target": 405, "weight": 2}, {"source": 48, "target": 405, "weight": 0}, {"source": 49, "target": 405, "weight": 0}, {"source": 50, "target": 405, "weight": 6}, {"source": 51, "target": 405, "weight": 1}, {"source": 52, "target": 405, "weight": 1}, {"source": 53, "target": 405, "weight": 8}, {"source": 54, "target": 405, "weight": 9}, {"source": 55, "target": 405, "weight": 0}, {"source": 56, "target": 405, "weight": 1}, {"source": 57, "target": 405, "weight": 14}, {"source": 58, "target": 405, "weight": 17}, {"source": 59, "target": 405, "weight": 0}, {"source": 60, "target": 405, "weight": 3}, {"source": 61, "target": 405, "weight": 0}, {"source": 62, "target": 405, "weight": 1}, {"source": 63, "target": 405, "weight": 6}, {"source": 64, "target": 405, "weight": 3}, {"source": 65, "target": 405, "weight": 4}, {"source": 66, "target": 405, "weight": 0}, {"source": 67, "target": 405, "weight": 2}, {"source": 68, "target": 405, "weight": 0}, {"source": 69, "target": 405, "weight": 0}, {"source": 70, "target": 405, "weight": 0}, {"source": 71, "target": 405, "weight": 0}, {"source": 72, "target": 405, "weight": 3}, {"source": 73, "target": 405, "weight": 4}, {"source": 74, "target": 405, "weight": 0}, {"source": 75, "target": 405, "weight": 4}, {"source": 76, "target": 405, "weight": 1}, {"source": 77, "target": 405, "weight": 3}, {"source": 78, "target": 405, "weight": 1}, {"source": 79, "target": 405, "weight": 6}, {"source": 80, "target": 405, "weight": 8}, {"source": 81, "target": 405, "weight": 0}, {"source": 82, "target": 405, "weight": 20}, {"source": 83, "target": 405, "weight": 0}, {"source": 84, "target": 405, "weight": 5}, {"source": 85, "target": 405, "weight": 0}, {"source": 86, "target": 405, "weight": 4}, {"source": 87, "target": 405, "weight": 0}, {"source": 88, "target": 405, "weight": 1}, {"source": 89, "target": 405, "weight": 6}, {"source": 90, "target": 405, "weight": 5}, {"source": 91, "target": 405, "weight": 0}, {"source": 92, "target": 405, "weight": 2}, {"source": 93, "target": 405, "weight": 0}, {"source": 94, "target": 405, "weight": 0}, {"source": 95, "target": 405, "weight": 0}, {"source": 96, "target": 405, "weight": 1}, {"source": 97, "target": 405, "weight": 0}, {"source": 98, "target": 405, "weight": 6}, {"source": 99, "target": 405, "weight": 0}, {"source": 100, "target": 405, "weight": 5}, {"source": 101, "target": 405, "weight": 1}, {"source": 102, "target": 405, "weight": 2}, {"source": 103, "target": 405, "weight": 3}, {"source": 104, "target": 405, "weight": 1}, {"source": 105, "target": 405, "weight": 6}, {"source": 106, "target": 405, "weight": 1}, {"source": 107, "target": 405, "weight": 2}, {"source": 108, "target": 405, "weight": 0}, {"source": 109, "target": 405, "weight": 6}, {"source": 110, "target": 405, "weight": 0}, {"source": 111, "target": 405, "weight": 15}, {"source": 112, "target": 405, "weight": 0}, {"source": 113, "target": 405, "weight": 0}, {"source": 114, "target": 405, "weight": 0}, {"source": 115, "target": 405, "weight": 2}, {"source": 116, "target": 405, "weight": 15}, {"source": 117, "target": 405, "weight": 0}, {"source": 118, "target": 405, "weight": 8}, {"source": 119, "target": 405, "weight": 27}, {"source": 120, "target": 405, "weight": 0}, {"source": 121, "target": 405, "weight": 0}, {"source": 122, "target": 405, "weight": 0}, {"source": 123, "target": 405, "weight": 0}, {"source": 124, "target": 405, "weight": 6}, {"source": 125, "target": 405, "weight": 7}, {"source": 126, "target": 405, "weight": 1}, {"source": 127, "target": 405, "weight": 0}, {"source": 128, "target": 405, "weight": 2}, {"source": 129, "target": 405, "weight": 1}, {"source": 130, "target": 405, "weight": 1}, {"source": 131, "target": 405, "weight": 0}, {"source": 132, "target": 405, "weight": 5}, {"source": 133, "target": 405, "weight": 0}, {"source": 134, "target": 405, "weight": 0}, {"source": 135, "target": 405, "weight": 1}, {"source": 136, "target": 405, "weight": 2}, {"source": 137, "target": 405, "weight": 0}, {"source": 138, "target": 405, "weight": 0}, {"source": 139, "target": 405, "weight": 7}, {"source": 140, "target": 405, "weight": 9}, {"source": 141, "target": 405, "weight": 1}, {"source": 142, "target": 405, "weight": 0}, {"source": 143, "target": 405, "weight": 2}, {"source": 144, "target": 405, "weight": 0}, {"source": 145, "target": 405, "weight": 1}, {"source": 146, "target": 405, "weight": 2}, {"source": 147, "target": 405, "weight": 0}, {"source": 148, "target": 405, "weight": 0}, {"source": 149, "target": 405, "weight": 0}, {"source": 150, "target": 405, "weight": 32}, {"source": 151, "target": 405, "weight": 0}, {"source": 152, "target": 405, "weight": 0}, {"source": 153, "target": 405, "weight": 17}, {"source": 154, "target": 405, "weight": 0}, {"source": 155, "target": 405, "weight": 0}, {"source": 156, "target": 405, "weight": 7}, {"source": 157, "target": 405, "weight": 0}, {"source": 158, "target": 405, "weight": 5}, {"source": 159, "target": 405, "weight": 17}, {"source": 160, "target": 405, "weight": 4}, {"source": 161, "target": 405, "weight": 37}, {"source": 162, "target": 405, "weight": 4}, {"source": 163, "target": 405, "weight": 28}, {"source": 164, "target": 405, "weight": 1}, {"source": 165, "target": 405, "weight": 1}, {"source": 166, "target": 405, "weight": 0}, {"source": 167, "target": 405, "weight": 8}, {"source": 168, "target": 405, "weight": 1}, {"source": 169, "target": 405, "weight": 2}, {"source": 170, "target": 405, "weight": 0}, {"source": 171, "target": 405, "weight": 2}, {"source": 172, "target": 405, "weight": 2}, {"source": 173, "target": 405, "weight": 0}, {"source": 174, "target": 405, "weight": 3}, {"source": 175, "target": 405, "weight": 2}, {"source": 176, "target": 405, "weight": 2}, {"source": 177, "target": 405, "weight": 19}, {"source": 178, "target": 405, "weight": 3}, {"source": 179, "target": 405, "weight": 31}, {"source": 180, "target": 405, "weight": 0}, {"source": 181, "target": 405, "weight": 4}, {"source": 182, "target": 405, "weight": 2}, {"source": 183, "target": 405, "weight": 0}, {"source": 184, "target": 405, "weight": 0}, {"source": 185, "target": 405, "weight": 14}, {"source": 186, "target": 405, "weight": 0}, {"source": 187, "target": 405, "weight": 1}, {"source": 188, "target": 405, "weight": 104}, {"source": 189, "target": 405, "weight": 4}, {"source": 190, "target": 405, "weight": 4}, {"source": 191, "target": 405, "weight": 7}, {"source": 192, "target": 405, "weight": 1}, {"source": 193, "target": 405, "weight": 19}, {"source": 194, "target": 405, "weight": 4}, {"source": 195, "target": 405, "weight": 0}, {"source": 196, "target": 405, "weight": 2}, {"source": 197, "target": 405, "weight": 0}, {"source": 198, "target": 405, "weight": 11}, {"source": 199, "target": 405, "weight": 19}, {"source": 200, "target": 405, "weight": 0}, {"source": 201, "target": 405, "weight": 17}, {"source": 202, "target": 405, "weight": 5}, {"source": 203, "target": 405, "weight": 2}, {"source": 204, "target": 405, "weight": 0}, {"source": 205, "target": 405, "weight": 2}, {"source": 206, "target": 405, "weight": 1}, {"source": 207, "target": 405, "weight": 1}, {"source": 208, "target": 405, "weight": 17}, {"source": 209, "target": 405, "weight": 1}, {"source": 210, "target": 405, "weight": 18}, {"source": 211, "target": 405, "weight": 0}, {"source": 212, "target": 405, "weight": 1}, {"source": 213, "target": 405, "weight": 28}, {"source": 214, "target": 405, "weight": 0}, {"source": 215, "target": 405, "weight": 0}, {"source": 216, "target": 405, "weight": 1}, {"source": 217, "target": 405, "weight": 0}, {"source": 218, "target": 405, "weight": 46}, {"source": 219, "target": 405, "weight": 45}, {"source": 220, "target": 405, "weight": 0}, {"source": 221, "target": 405, "weight": 1}, {"source": 222, "target": 405, "weight": 5}, {"source": 223, "target": 405, "weight": 0}, {"source": 224, "target": 405, "weight": 0}, {"source": 225, "target": 405, "weight": 0}, {"source": 226, "target": 405, "weight": 1}, {"source": 227, "target": 405, "weight": 1}, {"source": 228, "target": 405, "weight": 0}, {"source": 229, "target": 405, "weight": 0}, {"source": 230, "target": 405, "weight": 33}, {"source": 231, "target": 405, "weight": 3}, {"source": 232, "target": 405, "weight": 0}, {"source": 233, "target": 405, "weight": 0}, {"source": 234, "target": 405, "weight": 1}, {"source": 235, "target": 405, "weight": 0}, {"source": 236, "target": 405, "weight": 1}, {"source": 237, "target": 405, "weight": 5}, {"source": 238, "target": 405, "weight": 5}, {"source": 239, "target": 405, "weight": 2}, {"source": 240, "target": 405, "weight": 28}, {"source": 241, "target": 405, "weight": 2}, {"source": 242, "target": 405, "weight": 0}, {"source": 243, "target": 405, "weight": 1}, {"source": 244, "target": 405, "weight": 0}, {"source": 245, "target": 405, "weight": 7}, {"source": 246, "target": 405, "weight": 2}, {"source": 247, "target": 405, "weight": 7}, {"source": 248, "target": 405, "weight": 8}, {"source": 249, "target": 405, "weight": 0}, {"source": 250, "target": 405, "weight": 6}, {"source": 251, "target": 405, "weight": 15}, {"source": 252, "target": 405, "weight": 2}, {"source": 253, "target": 405, "weight": 0}, {"source": 254, "target": 405, "weight": 2}, {"source": 255, "target": 405, "weight": 4}, {"source": 256, "target": 405, "weight": 1}, {"source": 257, "target": 405, "weight": 10}, {"source": 258, "target": 405, "weight": 0}, {"source": 259, "target": 405, "weight": 0}, {"source": 260, "target": 405, "weight": 3}, {"source": 261, "target": 405, "weight": 92}, {"source": 262, "target": 405, "weight": 0}, {"source": 263, "target": 405, "weight": 19}, {"source": 264, "target": 405, "weight": 0}, {"source": 265, "target": 405, "weight": 2}, {"source": 266, "target": 405, "weight": 4}, {"source": 267, "target": 405, "weight": 0}, {"source": 268, "target": 405, "weight": 2}, {"source": 269, "target": 405, "weight": 2}, {"source": 270, "target": 405, "weight": 0}, {"source": 271, "target": 405, "weight": 1}, {"source": 272, "target": 405, "weight": 14}, {"source": 273, "target": 405, "weight": 1}, {"source": 274, "target": 405, "weight": 7}, {"source": 275, "target": 405, "weight": 5}, {"source": 276, "target": 405, "weight": 0}, {"source": 277, "target": 405, "weight": 1}, {"source": 278, "target": 405, "weight": 2}, {"source": 279, "target": 405, "weight": 15}, {"source": 280, "target": 405, "weight": 0}, {"source": 281, "target": 405, "weight": 0}, {"source": 282, "target": 405, "weight": 0}, {"source": 283, "target": 405, "weight": 60}, {"source": 284, "target": 405, "weight": 0}, {"source": 285, "target": 405, "weight": 0}, {"source": 286, "target": 405, "weight": 4}, {"source": 287, "target": 405, "weight": 0}, {"source": 288, "target": 405, "weight": 2}, {"source": 289, "target": 405, "weight": 22}, {"source": 290, "target": 405, "weight": 0}, {"source": 291, "target": 405, "weight": 0}, {"source": 292, "target": 405, "weight": 19}, {"source": 293, "target": 405, "weight": 1}, {"source": 294, "target": 405, "weight": 0}, {"source": 295, "target": 405, "weight": 4}, {"source": 296, "target": 405, "weight": 5}, {"source": 297, "target": 405, "weight": 0}, {"source": 298, "target": 405, "weight": 3}, {"source": 299, "target": 405, "weight": 1}, {"source": 300, "target": 405, "weight": 1}, {"source": 301, "target": 405, "weight": 6}, {"source": 302, "target": 405, "weight": 12}, {"source": 303, "target": 405, "weight": 1}, {"source": 304, "target": 405, "weight": 1}, {"source": 305, "target": 405, "weight": 7}, {"source": 306, "target": 405, "weight": 4}, {"source": 307, "target": 405, "weight": 7}, {"source": 308, "target": 405, "weight": 0}, {"source": 309, "target": 405, "weight": 2}, {"source": 310, "target": 405, "weight": 2}, {"source": 311, "target": 405, "weight": 0}, {"source": 312, "target": 405, "weight": 10}, {"source": 313, "target": 405, "weight": 1}, {"source": 314, "target": 405, "weight": 64}, {"source": 315, "target": 405, "weight": 5}, {"source": 316, "target": 405, "weight": 0}, {"source": 317, "target": 405, "weight": 0}, {"source": 318, "target": 405, "weight": 0}, {"source": 319, "target": 405, "weight": 3}, {"source": 320, "target": 405, "weight": 1}, {"source": 321, "target": 405, "weight": 15}, {"source": 322, "target": 405, "weight": 7}, {"source": 323, "target": 405, "weight": 0}, {"source": 324, "target": 405, "weight": 2}, {"source": 325, "target": 405, "weight": 0}, {"source": 326, "target": 405, "weight": 0}, {"source": 327, "target": 405, "weight": 2}, {"source": 328, "target": 405, "weight": 0}, {"source": 329, "target": 405, "weight": 10}, {"source": 330, "target": 405, "weight": 13}, {"source": 331, "target": 405, "weight": 0}, {"source": 332, "target": 405, "weight": 0}, {"source": 333, "target": 405, "weight": 0}, {"source": 334, "target": 405, "weight": 0}, {"source": 335, "target": 405, "weight": 0}, {"source": 336, "target": 405, "weight": 1}, {"source": 337, "target": 405, "weight": 0}, {"source": 338, "target": 405, "weight": 6}, {"source": 339, "target": 405, "weight": 5}, {"source": 340, "target": 405, "weight": 0}, {"source": 341, "target": 405, "weight": 0}, {"source": 342, "target": 405, "weight": 0}, {"source": 343, "target": 405, "weight": 10}, {"source": 344, "target": 405, "weight": 8}, {"source": 345, "target": 405, "weight": 0}, {"source": 346, "target": 405, "weight": 0}, {"source": 347, "target": 405, "weight": 2}, {"source": 348, "target": 405, "weight": 8}, {"source": 349, "target": 405, "weight": 5}, {"source": 350, "target": 405, "weight": 0}, {"source": 351, "target": 405, "weight": 6}, {"source": 352, "target": 405, "weight": 0}, {"source": 353, "target": 405, "weight": 1}, {"source": 354, "target": 405, "weight": 0}, {"source": 355, "target": 405, "weight": 0}, {"source": 356, "target": 405, "weight": 17}, {"source": 357, "target": 405, "weight": 0}, {"source": 358, "target": 405, "weight": 5}, {"source": 359, "target": 405, "weight": 1}, {"source": 360, "target": 405, "weight": 1}, {"source": 361, "target": 405, "weight": 1}, {"source": 362, "target": 405, "weight": 0}, {"source": 363, "target": 405, "weight": 1}, {"source": 364, "target": 405, "weight": 0}, {"source": 365, "target": 405, "weight": 0}, {"source": 366, "target": 405, "weight": 14}, {"source": 367, "target": 405, "weight": 1}, {"source": 368, "target": 405, "weight": 6}, {"source": 369, "target": 405, "weight": 0}, {"source": 370, "target": 405, "weight": 0}, {"source": 371, "target": 405, "weight": 0}, {"source": 372, "target": 405, "weight": 0}, {"source": 373, "target": 405, "weight": 21}, {"source": 374, "target": 405, "weight": 0}, {"source": 375, "target": 405, "weight": 45}, {"source": 376, "target": 405, "weight": 7}, {"source": 377, "target": 405, "weight": 0}, {"source": 378, "target": 405, "weight": 0}, {"source": 379, "target": 405, "weight": 0}, {"source": 380, "target": 405, "weight": 0}, {"source": 381, "target": 405, "weight": 0}, {"source": 382, "target": 405, "weight": 4}, {"source": 383, "target": 405, "weight": 0}, {"source": 384, "target": 405, "weight": 0}, {"source": 385, "target": 405, "weight": 4}, {"source": 386, "target": 405, "weight": 0}, {"source": 387, "target": 405, "weight": 0}, {"source": 388, "target": 405, "weight": 0}, {"source": 389, "target": 405, "weight": 0}, {"source": 390, "target": 405, "weight": 0}, {"source": 391, "target": 405, "weight": 8}, {"source": 392, "target": 405, "weight": 0}, {"source": 393, "target": 405, "weight": 0}, {"source": 394, "target": 405, "weight": 0}, {"source": 395, "target": 405, "weight": 27}, {"source": 396, "target": 405, "weight": 0}, {"source": 397, "target": 405, "weight": 0}, {"source": 398, "target": 405, "weight": 0}, {"source": 399, "target": 405, "weight": 0}, {"source": 400, "target": 405, "weight": 7}, {"source": 401, "target": 405, "weight": 0}, {"source": 402, "target": 405, "weight": 5}, {"source": 403, "target": 405, "weight": 0}, {"source": 404, "target": 405, "weight": 1}, {"source": 405, "target": 406, "weight": 8}, {"source": 405, "target": 407, "weight": 1}, {"source": 405, "target": 408, "weight": 4}, {"source": 405, "target": 409, "weight": 3}, {"source": 405, "target": 410, "weight": 15}, {"source": 405, "target": 411, "weight": 0}, {"source": 405, "target": 412, "weight": 3}, {"source": 405, "target": 413, "weight": 1}], "multigraph": false}};
+
+
+            // Data initcialization. Specific for each view!
+            // We are taking by granted that the source structure is well
+            // constructred, and has all the necessary data.
+            srcData.network.links.forEach(function(link) {
+                var nodes = [link.source, link.target];
+
+                nodes.forEach(function(node) {
+                    var tmp = 0;
+                    if(typeof(srcData.network.nodes[node].myWeight) !== "undefined") {
+                        tmp = srcData.network.nodes[node].myWeight;
+                    }
+                    srcData.network.nodes[node].myWeight = tmp + link.weight;
+                });
+            });
+
+
+
+
+            // PAGE-RELATED JAVASCRIPT ///////////////////////
+
+            // Get max values for Keyword and User Weight
+            /*srcData.network.nodes.forEach(function(node) {
+                if(typeof(node.id) === "string")
+                    maxKeywordWeight = Math.max(maxKeywordWeight, node.myWeight);
+            });*/
+            var maxUserWeight = 0;
+            var secondMaxUserWeight = 0;
+            var maxNode, secondMaxNode;
+
+            var tmp = 0;
+            srcData.network.nodes.forEach(function(node) {
+                
+                tmp = Math.max(maxUserWeight, node.myWeight);
+
+                if(tmp !== maxUserWeight){
+                    secondMaxNode = maxNode;
+                    maxNode = node;
+
+                    secondMaxUserWeight = maxUserWeight;
+                    maxUserWeight = tmp;
+
+                }
+
+                console.log(maxUserWeight + ' , ' + secondMaxUserWeight + ' , ' + node.myWeight);
+            });
+
+            maxNode.myWeight = secondMaxUserWeight;
+            maxUserWeight = secondMaxUserWeight;
+
+
+            //var element1 = document.getElementById('snaKeywordWeight');
+            var element2 = document.getElementById('snaUserWeight');
+
+            // Modifying DOM values for controls
+            //element1.max = element1.value = maxKeywordWeight;
+            element2.max = maxUserWeight;
+            element2.value = 0;
+            //element1.parentNode.childNodes[5].childNodes[1].textContent = element1.value;*/
+            element2.parentNode.childNodes[5].childNodes[1].textContent = element2.value;
+
+            // Adding control listeners
+         /*   element1.onchange = function() {
+                // Temporarily we disable controls
+                this.disabled = true;
+                var newValue = this.value;
+
+                // Modifying nodes
+                nodes
+                    .filter(function(d) {
+                        return (d.myWeight > newValue);
+                    })
+                    .attr("visibility", "hidden");
+
+                nodes
+                    .filter(function(d) {
+                        return (d.myWeight <= newValue);
+                    })
+                    .attr("visibility", "visible");
+
+                // Modify links
+                path
+                    .filter(function(d) {
+                        result = false;
+                        if(typeof(d.source.myWeight) !== "undefined")
+                            result = result || (d.source.myWeight > newValue);
+                        if(typeof(d.target.myWeight) !== "undefined")
+                            result = result || (d.target.myWeight > newValue);
+                        return result;
+                    })
+                    .attr("visibility", "hidden");
+
+                path
+                    .filter(function(d) {
+                        result = true;
+                        if(typeof(d.source.myWeight) !== "undefined")
+                            result = result && (d.source.myWeight <= newValue);
+                        if(typeof(d.target.myWeight) !== "undefined")
+                            result = result && (d.target.myWeight <= newValue);
+                        return result;
+                    })
+                    .attr("visibility", "visible");
+
+                // Update label
+                this.parentNode.childNodes[5].childNodes[1].textContent = this.value;
+                this.disabled = false;
+            };
+*/
+            element2.onchange = function() {
+                // Update controls
+                this.disabled = true;
+                var newValue = this.value;
+
+                // Modify links
+                nodes
+                    .filter(function(d) {
+                        return (d.myWeight < newValue);
+                    })
+                    .attr("visibility", "hidden");
+
+                nodes
+                    .filter(function(d) {
+                        return (d.myWeight >= newValue);
+                    })
+                    .attr("visibility", "visible");
+
+                // 2) We should also hide nodes, but not sure how to do that
+                // right now.
+                // 3) The same as above, but displaying them.
+
+                // Update controls
+                this.parentNode.childNodes[5].childNodes[1].textContent = this.value;
+                this.disabled = false;
+            };
+
+
+
+            // VISUALIZATION-RELATED JAVASCRIPT //////////////
+
+/*
+            // The following tooltip definition should be on a different
+            // file. For the sake of code's legibility
+            d3.helper = {};
+
+            d3.helper.tooltip = function(accessor){
+                return function(selection){
+                    var tooltipDiv;
+                    var bodyNode = d3.select('body').node();
+                    selection.on("mouseover", function(d, i){
+                        // Clean up lost tooltips
+                        d3.select('body').selectAll('div.tooltip').remove();
+
+                        // Append tooltip
+                        tooltipDiv = d3.select('body').append('div').attr('class', 'tooltip');
+                        var absoluteMousePos = d3.mouse(bodyNode);
+                        tooltipDiv.style('left', (absoluteMousePos[0] + 10)+'px')
+                            .style('top', (absoluteMousePos[1] - 15)+'px')
+                            .style('position', 'absolute')
+                            .style('z-index', 1001);
+
+                        // Add text using the accessor function
+                        var tooltipText = accessor(d, i) || '';
+
+                        // Crop text arbitrarily
+                        //tooltipDiv.style('width', function(d, i){return (tooltipText.length > 80) ? '300px' : null;})
+                        //    .html(tooltipText);
+                    }).on('mousemove', function(d, i) {
+                        // Move tooltip
+                        var absoluteMousePos = d3.mouse(bodyNode);
+                        tooltipDiv.style('left', (absoluteMousePos[0] + 10)+'px')
+                            .style('top', (absoluteMousePos[1] - 15)+'px');
+                        var tooltipText = accessor(d, i) || '';
+                        tooltipDiv.html(tooltipText);
+                    }).on("mouseout", function(d, i){
+                        // Remove tooltip
+                        tooltipDiv.remove();
+                    });
+
+                };
+            };
+*/
+
+            var mouseFlag = 0,
+                margin = {top: -5, right: -5, bottom: -5, left: -5},
+                width = 730 - margin.left - margin.right,
+                height = 500 - margin.top - margin.bottom,
+                nodes = {};
+
+            // Compute the distinct nodes from the links.
+            srcData.network.links.forEach(function(link) {
+                link.source = nodes[link.source] || (nodes[link.source] = {name: srcData.network.nodes[link.source].id, myWeight: srcData.network.nodes[link.source].myWeight});
+                link.target = nodes[link.target] || (nodes[link.target] = {name: srcData.network.nodes[link.target].id, myWeight: srcData.network.nodes[link.target].myWeight});
+            });
+
+            // Zoom behavior and callbacks
+            var zoom = d3.behavior.zoom()
+                .scaleExtent([0.1, 10])
+                .on("zoom", zoomed);
+
+            function zoomed() {
+                container.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+            }
+
+            // General parameters
+            var svg = d3.select(".snaParent").append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .attr("class", "snaBox")
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.right + ")")
+                .call(zoom);
+
+            var rect = svg.append("rect")
+                .attr("width", width)
+                .attr("height", height)
+                .style("fill", "none")
+                .style("pointer-events", "all");
+
+            var container = svg.append("g");
+
+            // Force layout parameters
+            var force = d3.layout.force()
+                .gravity(0.5)
+                .nodes(d3.values(nodes))
+                .links(srcData.network.links)
+                .size([width, height])
+                .linkDistance(100)
+                .linkStrength(0.5)
+                .charge(-300)
+                .on("tick", tick)
+                .start();
+
+            /*
+            // Per-type markers, as they don't inherit styles.
+            svg.append("defs").selectAll("marker")
+                .data(["suit", "licensing", "resolved"])
+                .enter().append("marker")
+                .attr("id", function(d) { return d; })
+                .attr("viewBox", "0 -5 10 10")
+                .attr("refX", 15)
+                .attr("refY", -1.5)
+                .attr("markerWidth", 6)
+                .attr("markerHeight", 6)
+                .attr("orient", "auto")
+                .attr("d", "M0,-5L10,0L0,5");
+            */
+
+            var path = container.selectAll(".link")
+                .data(force.links())
+                .enter().append("line")
+                .attr("class", "link");
+                /*
+                .attr("class", function(d) {
+                   var linkWidth = "l" + ((d.weight / maxUserWeight)).toFixed(1) * 10;
+                   return "link " + linkWidth;
+                })
+                .attr("weight", function(d) { return d.weight; });
+                */
+
+
+            // Drag&Drop behavior and callbacks
+            var nodeDrag = d3.behavior.drag()
+                .on("dragstart", nodeDragStart)
+                .on("drag", nodeDragMove)
+                .on("dragend", nodeDragEnd);
+
+            // Disable force feedback on nodes that have been dragged&dropped
+            function nodeDragStart(d, i) {
+                d3.event.sourceEvent.stopPropagation();
+                force.stop();
+            }
+
+            function nodeDragMove(d, i) {
+                d.px += d3.event.dx;
+                d.py += d3.event.dy;
+                d.x += d3.event.dx;
+                d.y += d3.event.dy;
+                tick();
+            }
+
+            function nodeDragEnd(d, i) {
+                d.fixed = true;
+                tick();
+                force.resume();
+            }
+
+            var nodes = container.selectAll(".node")
+                .data(force.nodes())
+                .enter()
+                .append("g")
+                .attr("class", function(d) {
+                   var linkWidth = "l" + ((d.myWeight / maxUserWeight)).toFixed(1) * 10;
+                   return "node " + linkWidth;
+                })
+                
+                //.attr("class", function(d) { return (typeof(d.name) == "string")? "keyword" : "user" })
+                .on("mousedown", nodeOnMouseDown)
+                .on("mouseup", nodeOnMouseUp)
+                .on("mousemove", nodeOnMouseMove)
+                .call(nodeDrag);
+
+            container.selectAll(".node").append("circle")
+                .attr("r", calcRadius);
+
+                /*
+                .call(d3.helper.tooltip(function(d, i) {
+                    return '<b>Node weight:</b> ' + d.myWeight;
+                }));
+                */
+               
+            container.selectAll(".user").append("rect")
+                .attr("width", 10)
+                .attr("height", 10)
+
+            var texts = nodes.append("text")
+                .attr("text-anchor", "middle")
+                .text(function(d) {
+                    var txt = "";
+                    if(typeof(d.name) === "string")
+                        txt = d.name;
+                    return txt;
+                });
+
+            // The user clicks down the button mouse
+            function nodeOnMouseDown() {
+                mouseFlag = 0;
+            }
+
+            // The user moves around the mouse
+            function nodeOnMouseMove() {
+                mouseFlag = 1;
+            }
+
+            // The user clicks up (releases) the button mouse
+            // It may happen that a click is not executed properly beacuase
+            // the node has been moved just a pixel. If that's a problem it
+            // may be interesting to implement a "delta" distance that should
+            // be reached to consider a mouse move.
+            function nodeOnMouseUp(d) {
+                if(mouseFlag === 0) {
+                    if(typeof(d.name) !== "string") {
+                        // It's a user. Access to tweeter profile
+                        window.open("https://twitter.com/intent/user?user_id=" + d.name);
+                    }
+                }
+            }
+
+            // Calculates the radius of a keyword node
+            function calcRadius(d) {
+                // var proportion = 0.1;   // This should be generated dynamically
+                //d.myWeight * proportion;
+                return 10; 
+            }
+
+            // Use elliptical arc path segments to doubly-encode directionality.
+            function tick() {
+                path
+                    .attr("x1", function(d) { return d.source.x; })
+                    .attr("y1", function(d) { return d.source.y; })
+                    .attr("x2", function(d) { return d.target.x; })
+                    .attr("y2", function(d) { return d.target.y; });
+
+                nodes.attr("transform", transform);
+            }
+
+            function transform(d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            }
+
+/**
+ * Removed
+            var links = [
+            {source: "Microsoft", target: "Amazon", type: "licensing"},
+            {source: "Microsoft", target: "HTC", type: "licensing"},
+            {source: "Samsung", target: "Apple", type: "suit"},
+            {source: "Motorola", target: "Apple", type: "suit"},
+            {source: "Nokia", target: "Apple", type: "resolved"},
+            {source: "HTC", target: "Apple", type: "suit"},
+            {source: "Kodak", target: "Apple", type: "suit"},
+            {source: "Microsoft", target: "Barnes & Noble", type: "suit"},
+            {source: "Microsoft", target: "Foxconn", type: "suit"},
+            {source: "Oracle", target: "Google", type: "suit"},
+            {source: "Apple", target: "HTC", type: "suit"},
+            {source: "Microsoft", target: "Inventec", type: "suit"},
+            {source: "Samsung", target: "Kodak", type: "resolved"},
+            {source: "LG", target: "Kodak", type: "resolved"},
+            {source: "RIM", target: "Kodak", type: "suit"},
+            {source: "Sony", target: "LG", type: "suit"},
+            {source: "Kodak", target: "LG", type: "resolved"},
+            {source: "Apple", target: "Nokia", type: "resolved"},
+            {source: "Qualcomm", target: "Nokia", type: "resolved"},
+            {source: "Apple", target: "Motorola", type: "suit"},
+            {source: "Microsoft", target: "Motorola", type: "suit"},
+            {source: "Motorola", target: "Microsoft", type: "suit"},
+            {source: "Huawei", target: "ZTE", type: "suit"},
+            {source: "Ericsson", target: "ZTE", type: "suit"},
+            {source: "Kodak", target: "Samsung", type: "resolved"},
+            {source: "Apple", target: "Samsung", type: "suit"},
+            {source: "Kodak", target: "RIM", type: "suit"},
+            {source: "Nokia", target: "Qualcomm", type: "suit"}
+            ];
+
+            var path = svg.append("g").selectAll("path")
+            .data(force.links())
+            .enter().append("path")
+            .attr("class", function(d) { return "link " + d.type; })
+            .attr("marker-end", function(d) { return "url(#" + d.type + ")"; });
+
+            // Use elliptical arc path segments to doubly-encode directionality.
+            function tick() {
+                path.attr("d", linkArc);
+                nodes.attr("transform", transform);
+            }
+            k
+            function linkArc(d) {
+                // console.log(d.target.x-d.radius)
+                var tX = d.target.x-d.target.radius;
+                var dx = tX - d.source.x,
+                dy = d.target.y - d.source.y,
+                dr = Math.sqrt(dx * dx + dy * dy);
+                return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0,1 " + tX + "," + d.target.y;
+            }
+*/
+
+        </script>
+    </body>
+</html>
