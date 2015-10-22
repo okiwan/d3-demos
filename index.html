@@ -14,7 +14,12 @@
         <div class="snaControls">
             <form id="snaControls">
                 <div class="snaControl">
-                    <label for="snaUserWeight">Minimum Weight</label>
+                    <label for="snaKeywordWeight">Keyword Weight</label>
+                    <input type="range" id="snaKeywordWeight" min="0" max="500" step="10">
+                    <span>(<span>200</span>)</span>
+                </div>
+                <div class="snaControl">
+                    <label for="snaUserWeight">User Weight</label>
                     <input type="range" id="snaUserWeight" min="0" max="500" step="10">
                     <span>(<span>200</span>)</span>
                 </div>
@@ -23,23 +28,325 @@
 
         <script type="text/javascript">
             // DATA //////////////////////////////////////////
-            var srcData = {"type": "cooccurrence_one_user", "network": {"directed": false, "graph": {}, "nodes": [{"id": "gol"}, {"id": "goal"}, {"id": "football"}, {"id": "#FCB"}, {"id": "futbol"}, {"id": "soccer"}], "links": [{"source": 0, "target": 5, "weight": 305}, {"source": 0, "target": 2, "weight": 236}, {"source": 0, "target": 3, "weight": 13}, {"source": 0, "target": 1, "weight": 68}, {"source": 0, "target": 4, "weight": 253}, {"source": 1, "target": 5, "weight": 1028}, {"source": 1, "target": 2, "weight": 197}, {"source": 1, "target": 3, "weight": 29}, {"source": 1, "target": 4, "weight": 30}, {"source": 2, "target": 5, "weight": 2954}, {"source": 2, "target": 3, "weight": 47}, {"source": 2, "target": 4, "weight": 135}, {"source": 3, "target": 5, "weight": 27}, {"source": 3, "target": 4, "weight": 12}, {"source": 4, "target": 5, "weight": 272}], "multigraph": false}};
+            var srcData = {
+                "type": "keywords_users",
+                "network": {
+                    "directed": false,
+                    "graph": {},
+                    "nodes": [
+                        {
+                        "id": "toyota"
+                        },
+                        {
+                        "id": 1278774565
+                        },
+                        {
+                        "id": 14426889
+                        },
+                        {
+                        "id": 3131520940
+                        },
+                        {
+                        "id": 2491390638
+                        },
+                        {
+                        "id": 618834351
+                        },
+                        {
+                        "id": 3116334865
+                        },
+                        {
+                        "id": "bmw"
+                        },
+                        {
+                        "id": 48058102
+                        },
+                        {
+                        "id": "vw"
+                        },
+                        {
+                        "id": 807316026
+                        },
+                        {
+                        "id": 3031332029
+                        },
+                        {
+                        "id": 297842046
+                        },
+                        {
+                        "id": "audi"
+                        }
+                    ],
+                    "links": [
+                        {
+                        "source": 0,
+                        "target": 3,
+                        "weight": 7
+                        },
+                        {
+                        "source": 0,
+                        "target": 4,
+                        "weight": 7
+                        },
+                        {
+                        "source": 0,
+                        "target": 5,
+                        "weight": 7
+                        },
+                        {
+                        "source": 0,
+                        "target": 6,
+                        "weight": 7
+                        },
+                        {
+                        "source": 0,
+                        "target": 8,
+                        "weight": 7
+                        },
+                        {
+                        "source": 0,
+                        "target": 10,
+                        "weight": 7
+                        },
+                        {
+                        "source": 0,
+                        "target": 11,
+                        "weight": 8
+                        },
+                        {
+                        "source": 0,
+                        "target": 12,
+                        "weight": 8
+                        },
+                        {
+                        "source": 1,
+                        "target": 13,
+                        "weight": 5
+                        },
+                        {
+                        "source": 2,
+                        "target": 13,
+                        "weight": 7
+                        },
+                        {
+                        "source": 2,
+                        "target": 7,
+                        "weight": 1
+                        },
+                        {
+                        "source": 2,
+                        "target": 9,
+                        "weight": 6
+                        },
+                        {
+                        "source": 3,
+                        "target": 13,
+                        "weight": 12
+                        },
+                        {
+                        "source": 3,
+                        "target": 7,
+                        "weight": 8
+                        },
+                        {
+                        "source": 3,
+                        "target": 9,
+                        "weight": 29
+                        },
+                        {
+                        "source": 4,
+                        "target": 13,
+                        "weight": 31
+                        },
+                        {
+                        "source": 4,
+                        "target": 7,
+                        "weight": 13
+                        },
+                        {
+                        "source": 4,
+                        "target": 9,
+                        "weight": 37
+                        },
+                        {
+                        "source": 5,
+                        "target": 13,
+                        "weight": 32
+                        },
+                        {
+                        "source": 5,
+                        "target": 7,
+                        "weight": 14
+                        },
+                        {
+                        "source": 5,
+                        "target": 9,
+                        "weight": 37
+                        },
+                        {
+                        "source": 6,
+                        "target": 13,
+                        "weight": 54
+                        },
+                        {
+                        "source": 6,
+                        "target": 7,
+                        "weight": 15
+                        },
+                        {
+                        "source": 6,
+                        "target": 9,
+                        "weight": 41
+                        },
+                        {
+                        "source": 7,
+                        "target": 8,
+                        "weight": 16
+                        },
+                        {
+                        "source": 7,
+                        "target": 10,
+                        "weight": 37
+                        },
+                        {
+                        "source": 7,
+                        "target": 11,
+                        "weight": 145
+                        },
+                        {
+                        "source": 7,
+                        "target": 12,
+                        "weight": 145
+                        },
+                        {
+                        "source": 8,
+                        "target": 13,
+                        "weight": 57
+                        },
+                        {
+                        "source": 8,
+                        "target": 9,
+                        "weight": 43
+                        },
+                        {
+                        "source": 9,
+                        "target": 10,
+                        "weight": 48
+                        },
+                        {
+                        "source": 9,
+                        "target": 11,
+                        "weight": 87
+                        },
+                        {
+                        "source": 9,
+                        "target": 12,
+                        "weight": 92
+                        },
+                        {
+                        "source": 10,
+                        "target": 13,
+                        "weight": 61
+                        },
+                        {
+                        "source": 11,
+                        "target": 13,
+                        "weight": 68
+                        },
+                        {
+                        "source": 12,
+                        "target": 13,
+                        "weight": 73
+                        }
+                    ],
+                    "multigraph": false
+                }
+            };
+
+            // Data initcialization. Specific for each view!
+            // We are taking by granted that the source structure is well
+            // constructred, and has all the necessary data.
+            srcData.network.links.forEach(function(link) {
+                var nodes = [link.source, link.target];
+                var tmp = 0;
+
+                nodes.forEach(function(node) {
+                    if(typeof(srcData.network.nodes[node].id) === "string") {
+                        tmp = (typeof srcData.network.nodes[node].myWeight === "undefined") ? 0 : srcData.network.nodes[node].myWeight;
+                        srcData.network.nodes[node].myWeight = tmp + link.weight;
+                    }
+                });
+            });
+
+
 
             // PAGE-RELATED JAVASCRIPT ///////////////////////
 
             // Get max values for Keyword and User Weight
-            var maxUserWeight = 0;
-            
+            var maxKeywordWeight = 0, maxUserWeight = 0;
+            srcData.network.nodes.forEach(function(node) {
+                if(typeof(node.id) === "string")
+                    maxKeywordWeight = Math.max(maxKeywordWeight, node.myWeight);
+            });
             srcData.network.links.forEach(function(link) {
                 maxUserWeight = Math.max(maxUserWeight, link.weight);
             });
 
+            var element1 = document.getElementById('snaKeywordWeight');
             var element2 = document.getElementById('snaUserWeight');
 
             // Modifying DOM values for controls
-            element2.max = maxUserWeight;
-            element2.value = 0;
+            element1.max = element1.value = maxKeywordWeight;
+            element2.max = element2.value = maxUserWeight;
+            element1.parentNode.childNodes[5].childNodes[1].textContent = element1.value;
             element2.parentNode.childNodes[5].childNodes[1].textContent = element2.value;
+
+            // Adding control listeners
+            element1.onchange = function() {
+                // Temporarily we disable controls
+                this.disabled = true;
+                var newValue = this.value;
+
+                // Modifying nodes
+                nodes
+                    .filter(function(d) {
+                        return (d.myWeight > newValue);
+                    })
+                    .attr("visibility", "hidden");
+
+                nodes
+                    .filter(function(d) {
+                        return (d.myWeight <= newValue);
+                    })
+                    .attr("visibility", "visible");
+
+                // Modify links
+                path
+                    .filter(function(d) {
+                        result = false;
+                        if(typeof(d.source.myWeight) !== "undefined")
+                            result = result || (d.source.myWeight > newValue);
+                        if(typeof(d.target.myWeight) !== "undefined")
+                            result = result || (d.target.myWeight > newValue);
+                        return result;
+                    })
+                    .attr("visibility", "hidden");
+
+                path
+                    .filter(function(d) {
+                        result = true;
+                        if(typeof(d.source.myWeight) !== "undefined")
+                            result = result && (d.source.myWeight <= newValue);
+                        if(typeof(d.target.myWeight) !== "undefined")
+                            result = result && (d.target.myWeight <= newValue);
+                        return result;
+                    })
+                    .attr("visibility", "visible");
+
+                // Update label
+                this.parentNode.childNodes[5].childNodes[1].textContent = this.value;
+                this.disabled = false;
+            };
 
             element2.onchange = function() {
                 // Update controls
@@ -49,15 +356,19 @@
                 // Modify links
                 path
                     .filter(function(d) {
-                        return (d.weight < newValue);
+                        return (d.weight > newValue);
                     })
                     .attr("visibility", "hidden");
 
                 path
                     .filter(function(d) {
-                        return (d.weight >= newValue);
+                        return (d.weight <= newValue);
                     })
                     .attr("visibility", "visible");
+
+                // 2) We should also hide nodes, but not sure how to do that
+                // right now.
+                // 3) The same as above, but displaying them.
 
                 // Update controls
                 this.parentNode.childNodes[5].childNodes[1].textContent = this.value;
@@ -149,7 +460,7 @@
 
             // Force layout parameters
             var force = d3.layout.force()
-                .gravity(0.1)
+                .gravity(0.001)
                 .nodes(d3.values(nodes))
                 .links(srcData.network.links)
                 .size([width, height])
@@ -181,10 +492,7 @@
                    var linkWidth = "l" + ((d.weight / maxUserWeight)).toFixed(1) * 10;
                    return "link " + linkWidth;
                 })
-                .attr("weight", function(d) { return d.weight; })
-                .call(d3.helper.tooltip(function(d, i) {
-                    return '<b>Path weight:</b> ' + d.weight;
-                }));
+                .attr("weight", function(d) { return d.weight; });
 
 
             // Drag&Drop behavior and callbacks
@@ -225,10 +533,10 @@
                 .call(nodeDrag);
 
             container.selectAll(".keyword").append("circle")
-                .attr("r", calcRadius);
-                /*.call(d3.helper.tooltip(function(d, i) {
+                .attr("r", calcRadius)
+                .call(d3.helper.tooltip(function(d, i) {
                     return '<b>Node weight:</b> ' + d.myWeight;
-                }));*/
+                }));
 
             container.selectAll(".user").append("rect")
                 .attr("width", 10)
@@ -269,7 +577,7 @@
 
             // Calculates the radius of a keyword node
             function calcRadius(d) {
-                var proportion = 0.004;   // This should be generated dynamically
+                var proportion = 0.1;   // This should be generated dynamically
                 return d.myWeight * proportion;
             }
 
